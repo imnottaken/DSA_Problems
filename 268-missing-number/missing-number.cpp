@@ -1,18 +1,13 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        unordered_set<int> st;
+    int ans = nums.size();
 
-        for(auto x: nums){
-            st.insert(x);
-        }
-
-        for(int i = 0; i <= nums.size(); i++){
-            if(st.count(i)==0){
-                return i;
-            }
-            
-        }
-        return -1;
+    for (int i = 0; i < nums.size(); i++){
+        ans ^= i; 
+        ans ^= nums[i];
     }
+    return ans;
+        
+};
 };
